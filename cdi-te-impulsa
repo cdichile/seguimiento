@@ -1,1 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seguimiento Fondo Impulsa · CDI Chile</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rojo:#EE3124; --naranja:#F58220; --amarillo:#FDB940;
+    --verde:#4AB969; --azul:#16BEcf; --purpura:#5A3795;
+    --gris:#999999; --negro:#111111;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:#F4F4F4; color:var(--negro);
+    font-family:'Nunito', Arial, sans-serif; font-weight:400;
+    line-height:1.6; padding:24px 16px 64px;
+  }
+  .tarjeta{
+    max-width:720px; margin:0 auto; background:#FFFFFF;
+    border-radius:16px; overflow:hidden;
+    box-shadow:0 2px 16px rgba(0,0,0,.06);
+  }
+  .franja{display:flex; height:8px;}
+  .franja span{flex:1;}
+  .contenido{padding:32px 36px 40px;}
 
+  .marca{display:flex; align-items:center; gap:12px; margin-bottom:24px;}
+  .marca p{margin:0;}
+  .marca .nombre{font-weight:700; font-size:17px;}
+  .marca .bajada{font-size:13px; color:var(--gris);}
+
+  h1{font-size:30px; font-weight:900; color:var(--purpura); margin:0 0 10px; line-height:1.2;}
+  .intro{font-size:16px; color:#444; margin:0 0 16px;}
+
+  details{border:1px solid #E4E4E4; border-radius:10px; padding:12px 16px; margin-bottom:32px;}
+  summary{cursor:pointer; font-weight:700; font-size:14px; color:var(--azul); list-style:none;}
+  summary::-webkit-details-marker{display:none;}
+  summary::before{content:"\25B8 "; display:inline-block; transition:transform .2s;}
+  details[open] summary::before{transform:rotate(90deg);}
+  details p{font-size:14px; color:#555; margin:10px 0 0;}
+
+  .etiqueta-seccion{
+    font-size:13px; font-weight:700; color:var(--gris);
+    text-transform:uppercase; letter-spacing:.5px; margin:0 0 12px;
+  }
+  .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:16px; margin-bottom:36px;}
+  .campo label{display:block; font-size:14px; font-weight:700; margin-bottom:6px;}
+  input[type=text], input[type=email], select, textarea{
+    width:100%; font-family:inherit; font-size:15px; padding:10px 12px;
+    border:1px solid #D8D8D8; border-radius:8px; background:#FFF; color:var(--negro);
+  }
+  input:focus, select:focus, textarea:focus{outline:none; border-color:var(--azul); box-shadow:0 0 0 3px rgba(22,190,207,.2);}
+  textarea{resize:vertical;}
+
+  .pregunta{border-left:4px solid #CCC; padding-left:18px; margin-bottom:32px;}
+  .pregunta h2{font-size:17px; font-weight:700; margin:0 0 4px; line-height:1.4;}
+  .pregunta .ayuda{font-size:13px; color:var(--gris); margin:0 0 10px;}
+  .opcion{display:flex; align-items:flex-start; gap:10px; font-size:15px; padding:5px 0; cursor:pointer;}
+  .opcion input{margin-top:4px; accent-color:var(--purpura); width:17px; height:17px; flex-shrink:0;}
+  .p1{border-color:var(--rojo);} .p2{border-color:var(--naranja);} .p3{border-color:var(--amarillo);}
+  .subcampo{display:none; margin-top:14px; padding:14px 16px; background:#F7F5FB; border-radius:10px;}
+  .subcampo.visible{display:block;}
+  .subcampo label{display:block; font-size:14px; font-weight:700; margin-bottom:6px;}
+  .p4{border-color:var(--verde);} .p5{border-color:var(--azul);} .p6{border-color:var(--purpura);}
+
+  .boton{
+    background:var(--purpura); color:#FFF; border:none; font-family:inherit;
+    font-size:17px; font-weight:700; padding:14px 34px; border-radius:10px; cursor:pointer;
+  }
+  .boton:hover{background:#4a2c7d;}
+  .boton:disabled{background:var(--gris); cursor:default;}
+  .pie{font-size:13px; color:var(--gris); margin:28px 0 0;}
+  .aviso{font-size:14px; color:var(--rojo); margin:14px 0 0; min-height:20px; font-weight:700;}
+
+  .gracias{display:none; text-align:center; padding:20px 0 10px;}
+  .gracias h1{color:var(--verde);}
+  .gracias p{font-size:16px; color:#444;}
+
+  @media (max-width:520px){
+    .contenido{padding:24px 20px 32px;}
+    h1{font-size:24px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="tarjeta">
+  <div class="franja">
+    <span style="background:#EE3124"></span><span style="background:#F58220"></span>
+    <span style="background:#FDB940"></span><span style="background:#4AB969"></span>
+    <span style="background:#16BEcf"></span><span style="background:#5A3795"></span>
+  </div>
+
+  <div class="contenido">
+
+    <div class="marca">
+      <svg width="40" height="40" viewBox="0 0 40 40" aria-hidden="true">
+        <path d="M20 3.5 A16.5 16.5 0 1 1 20 36.5 L9 36.5 A2.5 2.5 0 0 1 6.5 34 L6.5 25.5 A2.5 2.5 0 0 1 9 23 L13 23 A2.5 2.5 0 0 0 15.5 20.5 L15.5 6 A2.5 2.5 0 0 1 18 3.5 Z" fill="#16BEcf"/>
+        <circle cx="20" cy="20" r="7" fill="#FFFFFF"/>
+      </svg>
+      <div>
+        <p class="nombre">CDI Chile</p>
+        <p class="bajada">Fondo Impulsa · seguimiento a ganadores</p>
+      </div>
+    </div>
+
+    <div id="formulario">
+      <h1>¿Cómo te ha ido desde que ganaste el fondo?</h1>
+      <p class="intro">Son 8 preguntas cortas y te tomará menos de 5 minutos. Tus respuestas nos ayudan a mejorar el programa y a conseguir más fondos para más emprendedoras y emprendedores como tú.</p>
+
+      <details>
+        <summary>Leer más sobre este seguimiento</summary>
+        <p>Estamos contactando a todas las personas que ganaron el Fondo Impulsa entre 2020 y 2026. Queremos saber qué pasó con tu emprendimiento después del fondo: qué funcionó, qué no, y qué necesitas hoy.<br><br>
+        Usamos tus respuestas para medir el impacto del programa y reportarlo a nuestros aliados, siempre de forma agregada y anónima. Tus datos personales quedan resguardados por CDI Chile y no se comparten con terceros de forma individual.<br><br>
+        No hay respuestas buenas ni malas. Si tu negocio cerró o está en pausa, también queremos saberlo: esa información es igual de valiosa para nosotros.<br><br>
+        Dudas o consultas: lisseth@cdichile.org</p>
+      </details>
+
+      <p class="etiqueta-seccion">Para empezar</p>
+      <div class="grid">
+        <div class="campo">
+          <label for="nombre">Nombre y apellido</label>
+          <input type="text" id="nombre" placeholder="María Pérez">
+        </div>
+        <div class="campo">
+          <label for="rut">RUT</label>
+          <input type="text" id="rut" placeholder="12.345.678-9">
+        </div>
+        <div class="campo">
+          <label for="anio">Año en que ganaste el fondo</label>
+          <select id="anio">
+            <option value="">Selecciona…</option>
+            <option>2020</option><option>2021</option><option>2022</option>
+            <option>2023</option><option>2024</option><option>2025</option><option>2026</option>
+            <option>No recuerdo</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="pregunta p1">
+        <h2>1. ¿Cómo está tu emprendimiento hoy?</h2>
+        <label class="opcion"><input type="radio" name="q1" value="Activo y creciendo">Activo y creciendo</label>
+        <label class="opcion"><input type="radio" name="q1" value="Activo, se mantiene igual">Activo, se mantiene igual</label>
+        <label class="opcion"><input type="radio" name="q1" value="Activo, pero con dificultades">Activo, pero con dificultades</label>
+        <label class="opcion"><input type="radio" name="q1" value="En pausa">En pausa</label>
+        <label class="opcion"><input type="radio" name="q1" value="Cerrado">Cerrado</label>
+      </div>
+
+      <div class="pregunta p2">
+        <h2>2. ¿Cuáles son tus ingresos mensuales promedio actualmente?</h2>
+        <p class="ayuda">Considera lo que entra por tu negocio en un mes normal</p>
+        <label class="opcion"><input type="radio" name="q2" value="No tengo ingresos del negocio actualmente">No tengo ingresos del negocio actualmente</label>
+        <label class="opcion"><input type="radio" name="q2" value="$1 - $200.000">$1 – $200.000</label>
+        <label class="opcion"><input type="radio" name="q2" value="$200.001 - $400.000">$200.001 – $400.000</label>
+        <label class="opcion"><input type="radio" name="q2" value="$400.001 - $600.000">$400.001 – $600.000</label>
+        <label class="opcion"><input type="radio" name="q2" value="$600.001 - $800.000">$600.001 – $800.000</label>
+        <label class="opcion"><input type="radio" name="q2" value="$800.001 - $1.000.000">$800.001 – $1.000.000</label>
+        <label class="opcion"><input type="radio" name="q2" value="$1.000.001 - $1.200.000">$1.000.001 – $1.200.000</label>
+        <label class="opcion"><input type="radio" name="q2" value="$1.200.001 - $1.400.000">$1.200.001 – $1.400.000</label>
+        <label class="opcion"><input type="radio" name="q2" value="$1.400.001 - $2.000.000">$1.400.001 – $2.000.000</label>
+        <label class="opcion"><input type="radio" name="q2" value="$2.000.001 - $3.000.000">$2.000.001 – $3.000.000</label>
+        <label class="opcion"><input type="radio" name="q2" value="Más de $3.000.000">Más de $3.000.000</label>
+      </div>
+
+      <div class="pregunta p3">
+        <h2>3. Comparando con antes del fondo, tus ingresos hoy…</h2>
+        <label class="opcion"><input type="radio" name="q3" value="Subieron bastante">Subieron bastante</label>
+        <label class="opcion"><input type="radio" name="q3" value="Subieron un poco">Subieron un poco</label>
+        <label class="opcion"><input type="radio" name="q3" value="Se mantienen igual">Se mantienen igual</label>
+        <label class="opcion"><input type="radio" name="q3" value="Bajaron">Bajaron</label>
+      </div>
+
+      <div class="pregunta p4">
+        <h2>4. ¿Qué lograste gracias al fondo?</h2>
+        <p class="ayuda">Puedes marcar varias</p>
+        <label class="opcion"><input type="checkbox" name="q4" value="Aumenté mis ventas">Aumenté mis ventas</label>
+        <label class="opcion"><input type="checkbox" name="q4" value="Compré máquinas o equipos que sigo usando">Compré máquinas o equipos que sigo usando</label>
+        <label class="opcion"><input type="checkbox" name="q4" value="Formalicé mi negocio">Formalicé mi negocio</label>
+        <label class="opcion"><input type="checkbox" name="q4" value="Contraté a alguien">Contraté a alguien</label>
+        <label class="opcion"><input type="checkbox" name="q4" value="Amplié mis productos o servicios">Amplié mis productos o servicios</label>
+        <label class="opcion"><input type="checkbox" name="q4" value="Mejoré mi presencia digital">Mejoré mi presencia digital</label>
+        <label class="opcion"><input type="checkbox" name="q4" value="Todavía no veo resultados">Todavía no veo resultados</label>
+      </div>
+
+      <div class="pregunta p5">
+        <h2>5. ¿Qué es lo más importante que cambió en tu negocio o en tu vida desde que ganaste el fondo?</h2>
+        <textarea id="q5" rows="3" placeholder="Cuéntanos en dos o tres líneas"></textarea>
+      </div>
+
+      <div class="pregunta p6">
+        <h2>6. ¿Qué necesitas hoy para seguir creciendo?</h2>
+        <textarea id="q6" rows="2" placeholder="Por ejemplo: capital, clientes, capacitación, equipos…"></textarea>
+      </div>
+
+      <div class="pregunta p1">
+        <h2>7. ¿Te gustaría hacer un live en las redes sociales de CDI durante los próximos meses para hablar de tu negocio?</h2>
+        <p class="ayuda">Es una oportunidad gratuita para dar a conocer lo que haces</p>
+        <label class="opcion"><input type="radio" name="q7" value="Sí, me interesa">Sí, me interesa</label>
+        <label class="opcion"><input type="radio" name="q7" value="Tal vez, me gustaría saber más">Tal vez, me gustaría saber más</label>
+        <label class="opcion"><input type="radio" name="q7" value="No por ahora">No por ahora</label>
+
+        <div class="subcampo" id="bloqueRedes">
+          <label for="q7b">¿Cuál es tu usuario de Instagram, Facebook u otra red social?</label>
+          <input type="text" id="q7b" placeholder="@minegocio">
+          <p class="ayuda" style="margin:6px 0 0;">Si tienes varias, escríbelas separadas por coma</p>
+        </div>
+      </div>
+
+      <div class="pregunta p2">
+        <h2>8. ¿Tienes alguna sugerencia o comentario para CDI Chile?</h2>
+        <p class="ayuda">Opcional. Nos sirve todo: lo bueno, lo que faltó y lo que mejorarías</p>
+        <textarea id="q8" rows="2" placeholder="Escribe aquí si quieres dejarnos un mensaje"></textarea>
+      </div>
+
+      <button class="boton" id="btnEnviar">Enviar mis respuestas</button>
+      <p class="aviso" id="aviso"></p>
+      <p class="pie">CDI Chile · Transformando vidas a través de la tecnología</p>
+    </div>
+
+    <div class="gracias" id="gracias">
+      <h1>¡Gracias por responder!</h1>
+      <p>Tus respuestas ya quedaron registradas. Esta información nos ayuda a seguir abriendo oportunidades para más emprendedoras y emprendedores.</p>
+      <p class="pie">CDI Chile · lisseth@cdichile.org</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  var URL_SCRIPT = "PEGA_AQUI_LA_URL_DE_TU_APPS_SCRIPT";
+
+  var boton = document.getElementById("btnEnviar");
+  var aviso = document.getElementById("aviso");
+
+  function valorRadio(nombre){
+    var s = document.querySelector('input[name="' + nombre + '"]:checked');
+    return s ? s.value : "";
+  }
+  function valoresCheckbox(nombre){
+    var lista = document.querySelectorAll('input[name="' + nombre + '"]:checked');
+    var out = [];
+    for (var i = 0; i < lista.length; i++) out.push(lista[i].value);
+    return out.join(" | ");
+  }
+
+  var opcionesQ7 = document.querySelectorAll('input[name="q7"]');
+  var bloqueRedes = document.getElementById("bloqueRedes");
+  for (var j = 0; j < opcionesQ7.length; j++) {
+    opcionesQ7[j].addEventListener("change", function(){
+      if (this.value === "No por ahora") {
+        bloqueRedes.classList.remove("visible");
+        document.getElementById("q7b").value = "";
+      } else {
+        bloqueRedes.classList.add("visible");
+      }
+    });
+  }
+
+  boton.addEventListener("click", function(){
+    var datos = {
+      nombre: document.getElementById("nombre").value.trim(),
+      rut: document.getElementById("rut").value.trim(),
+      anio: document.getElementById("anio").value,
+      q1_estado: valorRadio("q1"),
+      q2_ingresos: valorRadio("q2"),
+      q3_cambio: valorRadio("q3"),
+      q4_logros: valoresCheckbox("q4"),
+      q5_cambio_importante: document.getElementById("q5").value.trim(),
+      q6_necesidad: document.getElementById("q6").value.trim(),
+      q7_live: valorRadio("q7"),
+      q7b_redes: document.getElementById("q7b").value.trim(),
+      q8_sugerencia: document.getElementById("q8").value.trim()
+    };
+
+    if (!datos.nombre || !datos.rut || !datos.anio) {
+      aviso.textContent = "Completa tu nombre, RUT y el año en que ganaste el fondo.";
+      return;
+    }
+    if (!datos.q1_estado || !datos.q2_ingresos || !datos.q3_cambio) {
+      aviso.textContent = "Responde las preguntas 1, 2 y 3 antes de enviar.";
+      return;
+    }
+
+    aviso.textContent = "";
+    boton.disabled = true;
+    boton.textContent = "Enviando…";
+
+    var cuerpo = new URLSearchParams(datos);
+
+    fetch(URL_SCRIPT, { method: "POST", mode: "no-cors", body: cuerpo })
+      .then(function(){
+        document.getElementById("formulario").style.display = "none";
+        document.getElementById("gracias").style.display = "block";
+        window.scrollTo(0, 0);
+      })
+      .catch(function(){
+        boton.disabled = false;
+        boton.textContent = "Enviar mis respuestas";
+        aviso.textContent = "No pudimos enviar tus respuestas. Revisa tu conexión e inténtalo otra vez.";
+      });
+  });
+</script>
+
+</body>
+</html>
