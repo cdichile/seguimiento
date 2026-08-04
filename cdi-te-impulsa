@@ -231,7 +231,7 @@
 </div>
 
 <script>
-  var URL_SCRIPT = "PEGA_AQUI_LA_URL_DE_TU_APPS_SCRIPT";
+  var URL_SCRIPT = "https://script.google.com/macros/s/AKfycbznxS49-nvHu0K3ekpeEAJO6Qe_41GcGyCYCMUBmaHopxxxHKCGNRvAFeoSjT28hnUXCg/exec";
 
   var boton = document.getElementById("btnEnviar");
   var aviso = document.getElementById("aviso");
