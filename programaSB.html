@@ -107,8 +107,8 @@
     <div class="campo">
       <label class="q" for="rut">RUT <span class="req">*</span></label>
       <p class="ayuda">Nos permite conectar tu respuesta con tu ficha de postulación y ver cómo cambió tu situación. Sin esto, tu respuesta no puede formar parte de la medición.</p>
-      <input type="text" id="rut" placeholder="12.345.678-9" inputmode="text">
-      <div class="error" id="e-rut">Revisa el RUT, incluye el dígito verificador.</div>
+      <input type="text" id="rut" placeholder="12345678-9" inputmode="text">
+      <div class="error" id="e-rut">Escribe tu RUT sin puntos y con guion, ej: 12345678-9.</div>
     </div>
 
     <p class="seccion">Tu situación hoy</p>
@@ -245,29 +245,16 @@ document.addEventListener('change', e => {
   } else { w.classList.toggle('sel', i.checked); }
 });
 
-/* Validación de RUT chileno (módulo 11) */
+/* Formato esperado: solo números y guion, sin puntos (ej: 12345678-9).
+   No se valida el dígito verificador — solo que tenga la forma de un RUT. */
 function rutValido(rut){
-  rut = rut.replace(/[.\s]/g,'').replace(/-/g,'').toUpperCase();
-  if (rut.length < 8 || rut.length > 9) return false;
-  const cuerpo = rut.slice(0,-1), dv = rut.slice(-1);
-  if (!/^\d+$/.test(cuerpo)) return false;
-  let suma = 0, mul = 2;
-  for (let i = cuerpo.length - 1; i >= 0; i--) {
-    suma += parseInt(cuerpo[i]) * mul;
-    mul = mul === 7 ? 2 : mul + 1;
-  }
-  const res = 11 - (suma % 11);
-  const dvCalc = res === 11 ? '0' : res === 10 ? 'K' : String(res);
-  return dv === dvCalc;
+  rut = rut.trim().toUpperCase();
+  return /^\d{6,8}-[\dK]$/.test(rut);
 }
 function formatRut(rut){
-  rut = rut.replace(/[.\s-]/g,'').toUpperCase();
-  if (rut.length < 2) return rut;
-  const cuerpo = rut.slice(0,-1), dv = rut.slice(-1);
-  return cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g,'.') + '-' + dv;
+  return rut.trim().toUpperCase();
 }
 const inRut = document.getElementById('rut');
-inRut.addEventListener('blur', () => { if (inRut.value.trim()) inRut.value = formatRut(inRut.value); });
 
 const err = (id,on) => document.getElementById(id).classList.toggle('on', on);
 const val = n => { const x = document.querySelector(`input[name="${n}"]:checked`); return x ? x.value : ''; };
