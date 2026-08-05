@@ -1,1 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10 años · Inclusión y Diversidad — CDI Chile &amp; Empresas SB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rojo:#EE3124; --naranja:#F58220; --amarillo:#FDB940;
+    --verde:#4AB969; --azul:#16BECF; --purpura:#5A3795;
+    --gris:#999999; --gris-claro:#F4F4F4; --negro:#1A1A1A;
+    --primario:var(--verde);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; padding:0; font-family:'Nunito',Arial,sans-serif;
+       background:#FFF; color:var(--negro); line-height:1.6;}
+  .franja{height:8px; display:flex;}
+  .franja span{flex:1;}
+  .wrap{max-width:640px; margin:0 auto; padding:0 20px 60px;}
+  header{text-align:center; padding:36px 0 8px;}
+  .badge{display:inline-block; background:var(--primario); color:#fff;
+         font-weight:900; font-size:13px; letter-spacing:1.5px;
+         padding:7px 16px; border-radius:999px; text-transform:uppercase;}
+  h1{font-size:30px; font-weight:900; margin:18px 0 6px; color:var(--primario); line-height:1.2;}
+  .sub{font-size:16px; color:var(--gris); font-weight:600; margin:0;}
+  .intro{background:var(--gris-claro); border-left:5px solid var(--primario);
+         border-radius:0 10px 10px 0; padding:18px 20px; margin:28px 0 10px; font-size:15px;}
+  .intro strong{color:var(--primario);}
+  .seccion{font-size:12.5px; font-weight:900; letter-spacing:1.3px; text-transform:uppercase;
+           color:var(--gris); border-bottom:2px solid #EEE; padding-bottom:7px; margin:42px 0 4px;}
+  .campo{margin:26px 0;}
+  .campo > label.q, .campo > p.q{display:block; font-weight:700; font-size:17px; margin:0 0 4px;}
+  .ayuda{font-size:13.5px; color:var(--gris); margin:0 0 12px; font-weight:400;}
+  .req{color:var(--rojo); font-weight:900;}
+  .opt{color:var(--gris); font-weight:400; font-size:14px;}
+  input[type=text], select, textarea{
+    width:100%; padding:13px 14px; font-family:inherit; font-size:15px;
+    border:2px solid #DDD; border-radius:10px; background:#fff; color:var(--negro);
+    transition:border-color .15s;}
+  input:focus, select:focus, textarea:focus{outline:none; border-color:var(--primario);}
+  textarea{resize:vertical; min-height:100px;}
+  .nota{background:#F1FAF4; border:2px solid var(--verde); border-radius:10px;
+        padding:13px 16px; font-size:14px; margin:0 0 12px;}
+  .opcion{display:flex; align-items:flex-start; gap:11px; padding:11px 14px; margin-bottom:8px;
+          border:2px solid #E4E4E4; border-radius:10px; cursor:pointer; font-size:15px;
+          transition:border-color .15s, background .15s;}
+  .opcion:hover{border-color:var(--primario); background:#FAFDFB;}
+  .opcion input{margin:4px 0 0; accent-color:var(--primario); flex-shrink:0; width:17px; height:17px;}
+  .opcion.sel{border-color:var(--primario); background:#F1FAF4;}
+  .consent{display:flex; gap:11px; align-items:flex-start; background:#FFF9EC;
+           border:2px solid var(--amarillo); border-radius:10px; padding:14px 16px;
+           font-size:14.5px; margin-top:14px; cursor:pointer;}
+  .consent input{accent-color:var(--naranja); width:18px; height:18px; margin:3px 0 0; flex-shrink:0;}
+  button{width:100%; padding:17px; margin-top:34px; background:var(--primario); color:#fff;
+         border:none; border-radius:12px; font-family:inherit; font-size:18px; font-weight:900;
+         cursor:pointer; letter-spacing:.3px; transition:opacity .15s;}
+  button:hover{opacity:.88;}
+  button:disabled{background:var(--gris); cursor:not-allowed;}
+  .error{color:var(--rojo); font-size:13.5px; font-weight:700; margin-top:6px; display:none;}
+  .error.on{display:block;}
+  .gracias{display:none; text-align:center; padding:70px 20px;}
+  .gracias.on{display:block;}
+  .gracias .tick{font-size:60px; line-height:1;}
+  .gracias h2{color:var(--primario); font-size:27px; font-weight:900; margin:18px 0 10px;}
+  .gracias p{color:var(--gris); font-size:16px; max-width:430px; margin:0 auto;}
+  .privacidad{font-size:12.5px; color:var(--gris); text-align:center; margin-top:18px; line-height:1.5;}
+  footer{text-align:center; font-size:13px; color:var(--gris); padding:26px 20px 10px;}
+  footer a{color:var(--primario); text-decoration:none; font-weight:600;}
+  @media(max-width:520px){ h1{font-size:24px;} }
+</style>
+</head>
+<body>
 
+<div class="franja">
+  <span style="background:var(--rojo)"></span><span style="background:var(--naranja)"></span>
+  <span style="background:var(--amarillo)"></span><span style="background:var(--verde)"></span>
+  <span style="background:var(--azul)"></span><span style="background:var(--purpura)"></span>
+</div>
+
+<div class="wrap">
+  <div id="formulario">
+    <header>
+      <span class="badge">10 años · 2017–2026</span>
+      <h1>Tu camino después del programa</h1>
+      <p class="sub">Inclusión y Diversidad · CDI Chile &amp; Empresas SB</p>
+    </header>
+
+    <div class="intro">
+      Este año el programa cumple <strong>10 años</strong>, y estamos preparando un reporte
+      para Empresas SB sobre lo que ha significado esta década. Tú fuiste parte de ese camino,
+      así que tu respuesta entra directo en ese balance.
+      <br><br>
+      Son <strong>6 preguntas</strong> y toma menos de 3 minutos. Gracias por regalarnos ese rato.
+    </div>
+
+    <p class="seccion">Tus datos</p>
+
+    <div class="campo">
+      <label class="q" for="nombre">Nombre completo <span class="req">*</span></label>
+      <input type="text" id="nombre" autocomplete="name">
+      <div class="error" id="e-nombre">Necesitamos tu nombre.</div>
+    </div>
+
+    <div class="campo">
+      <label class="q" for="rut">RUT <span class="req">*</span></label>
+      <p class="ayuda">Nos permite conectar tu respuesta con tu ficha de postulación y ver cómo cambió tu situación. Sin esto, tu respuesta no puede formar parte de la medición.</p>
+      <input type="text" id="rut" placeholder="12.345.678-9" inputmode="text">
+      <div class="error" id="e-rut">Revisa el RUT, incluye el dígito verificador.</div>
+    </div>
+
+    <p class="seccion">Tu situación hoy</p>
+
+    <div class="campo" data-grupo="p1">
+      <p class="q">1. ¿Cuál es tu situación laboral hoy? <span class="req">*</span></p>
+      <label class="opcion"><input type="radio" name="p1" value="Trabajo dependiente"><span>Trabajo dependiente</span></label>
+      <label class="opcion"><input type="radio" name="p1" value="Tengo un emprendimiento o empresa"><span>Tengo un emprendimiento o empresa</span></label>
+      <label class="opcion"><input type="radio" name="p1" value="Trabajador independiente / Freelance"><span>Trabajador independiente / Freelance</span></label>
+      <label class="opcion"><input type="radio" name="p1" value="Estudiando"><span>Estudiando</span></label>
+      <label class="opcion"><input type="radio" name="p1" value="Jubilado"><span>Jubilado</span></label>
+      <label class="opcion"><input type="radio" name="p1" value="No estoy buscando trabajo en este momento"><span>No estoy buscando trabajo en este momento</span></label>
+      <label class="opcion"><input type="radio" name="p1" value="Cesante"><span>Cesante</span></label>
+      <div class="error" id="e-p1">Selecciona una opción.</div>
+    </div>
+
+    <div class="campo">
+      <label class="q" for="p2">2. ¿En qué rango está tu ingreso mensual hoy?</label>
+      <div class="nota">
+        Te preguntamos esto porque es la única forma de mostrarle a Empresas SB si el programa
+        realmente mejoró la situación económica de las personas. Comparamos este dato con el que
+        nos diste al postular, y lo reportamos siempre de forma agrupada y anónima: nunca aparece
+        tu nombre asociado a una cifra. <strong>Para nosotros es muy importante que respondas.</strong>
+      </div>
+      <select id="p2"><option value="">Selecciona un rango</option></select>
+    </div>
+
+    <p class="seccion">Lo que pasó después</p>
+
+    <div class="campo" data-grupo="p3">
+      <p class="q">3. Después del programa, ¿cuál de estas cosas hiciste? <span class="req">*</span></p>
+      <p class="ayuda">Puedes marcar todas las que correspondan.</p>
+      <label class="opcion"><input type="checkbox" name="p3" value="Postulé a empleos usando lo que aprendí"><span>Postulé a empleos usando lo que aprendí</span></label>
+      <label class="opcion"><input type="checkbox" name="p3" value="Actualicé mi CV o mi perfil de LinkedIn"><span>Actualicé mi CV o mi perfil de LinkedIn</span></label>
+      <label class="opcion"><input type="checkbox" name="p3" value="Contacté a alguien que conocí en el programa"><span>Contacté a alguien que conocí en el programa</span></label>
+      <label class="opcion"><input type="checkbox" name="p3" value="Empecé o formalicé un emprendimiento"><span>Empecé o formalicé un emprendimiento</span></label>
+      <label class="opcion"><input type="checkbox" name="p3" value="Seguí estudiando algo relacionado"><span>Seguí estudiando algo relacionado</span></label>
+      <label class="opcion"><input type="checkbox" name="p3" value="Conseguí un mejor cargo o sueldo donde ya estaba"><span>Conseguí un mejor cargo o sueldo donde ya estaba</span></label>
+      <label class="opcion"><input type="checkbox" name="p3" value="Ninguna todavía"><span>Ninguna todavía</span></label>
+      <div class="error" id="e-p3">Marca al menos una opción.</div>
+    </div>
+
+    <div class="campo" data-grupo="p4">
+      <p class="q">4. ¿Qué del programa sigues usando hoy? <span class="req">*</span></p>
+      <p class="ayuda">Puedes marcar todas las que correspondan.</p>
+      <label class="opcion"><input type="checkbox" name="p4" value="Herramientas digitales concretas"><span>Herramientas digitales concretas</span></label>
+      <label class="opcion"><input type="checkbox" name="p4" value="La forma de presentarme profesionalmente"><span>La forma de presentarme profesionalmente</span></label>
+      <label class="opcion"><input type="checkbox" name="p4" value="Contactos que hice ahí"><span>Contactos que hice ahí</span></label>
+      <label class="opcion"><input type="checkbox" name="p4" value="La confianza para postular o negociar"><span>La confianza para postular o negociar</span></label>
+      <label class="opcion"><input type="checkbox" name="p4" value="Nada en particular hoy"><span>Nada en particular hoy</span></label>
+      <div class="error" id="e-p4">Marca al menos una opción.</div>
+    </div>
+
+    <p class="seccion">Hacia adelante</p>
+
+    <div class="campo">
+      <label class="q" for="p5">5. ¿Qué otras formaciones desearías realizar para mejorar tu perfil profesional? <span class="req">*</span></label>
+      <p class="ayuda">Cuéntanos qué te gustaría aprender. Esto nos ayuda a decidir qué cursos ofrecer más adelante.</p>
+      <textarea id="p5" placeholder="Escribe aquí..."></textarea>
+      <div class="error" id="e-p5">Cuéntanos aunque sea una idea.</div>
+    </div>
+
+    <div class="campo">
+      <label class="q" for="p6">6. Cuéntanos en una o dos líneas qué cambió para ti <span class="opt">(opcional)</span></label>
+      <p class="ayuda">Lo que escribas acá nos ayuda a mostrar tu paso por el programa.</p>
+      <textarea id="p6" placeholder="Escribe aquí..."></textarea>
+      <label class="consent">
+        <input type="checkbox" id="autoriza">
+        <span>Autorizo a CDI Chile a usar mi testimonio, con mi nombre, en el reporte y materiales de los 10 años del programa.</span>
+      </label>
+    </div>
+
+    <button id="enviar">Enviar mi respuesta</button>
+    <div class="error" id="e-envio" style="text-align:center;">No pudimos enviar tu respuesta. Inténtalo de nuevo en unos segundos.</div>
+
+    <p class="privacidad">
+      Tus datos son tratados por CDI Chile solo para la evaluación de este programa.
+      Los resultados se reportan de forma agregada y anónima.
+    </p>
+  </div>
+
+  <div class="gracias" id="gracias">
+    <div class="tick">🎉</div>
+    <h2>¡Gracias por responder!</h2>
+    <p>Tu respuesta ya es parte del reporte de los 10 años del programa.
+       Diez años no se cumplen solos: se cumplen con personas como tú.</p>
+  </div>
+
+  <footer>
+    CDI Chile · Puma 1180, Recoleta, Santiago<br>
+    <a href="https://cdichile.org" target="_blank" rel="noopener">cdichile.org</a> · info@cdichile.org
+  </footer>
+</div>
+
+<div class="franja">
+  <span style="background:var(--purpura)"></span><span style="background:var(--azul)"></span>
+  <span style="background:var(--verde)"></span><span style="background:var(--amarillo)"></span>
+  <span style="background:var(--naranja)"></span><span style="background:var(--rojo)"></span>
+</div>
+
+<script>
+/* ─────────────────────────────────────────────────────────
+   PEGA AQUÍ LA URL DE TU APPS SCRIPT
+   ───────────────────────────────────────────────────────── */
+const URL_SHEET = "https://script.google.com/macros/s/AKfycbzVB6KsohbTMuEx-VjKiFvJKpTctOc89DGKpEiBRuPhIvXv4k9wOkpEkUoh4XI6cKBJ/exec";
+
+/* Tramos de ingreso */
+const TRAMOS = [
+  "Menos de $200.000",
+  "$200.000 – $400.000",
+  "$400.000 – $600.000",
+  "$600.000 – $800.000",
+  "$800.000 – $1.000.000",
+  "$1.000.000 – $1.200.000",
+  "$1.200.000 – $1.400.000",
+  "$1.400.000 – $2.000.000",
+  "$2.000.000 – $2.500.000",
+  "$2.500.000 – $3.000.000",
+  "Más de $3.000.000"
+];
+const selP2 = document.getElementById('p2');
+TRAMOS.forEach(t => selP2.insertAdjacentHTML('beforeend', `<option value="${t}">${t}</option>`));
+
+/* Resaltado visual */
+document.addEventListener('change', e => {
+  const i = e.target;
+  if (i.type !== 'radio' && i.type !== 'checkbox') return;
+  const w = i.closest('label');
+  if (!w) return;
+  if (i.type === 'radio') {
+    document.querySelectorAll(`input[name="${i.name}"]`).forEach(o => {
+      const l = o.closest('label'); if (l) l.classList.toggle('sel', o.checked);
+    });
+  } else { w.classList.toggle('sel', i.checked); }
+});
+
+/* Validación de RUT chileno (módulo 11) */
+function rutValido(rut){
+  rut = rut.replace(/[.\s]/g,'').replace(/-/g,'').toUpperCase();
+  if (rut.length < 8 || rut.length > 9) return false;
+  const cuerpo = rut.slice(0,-1), dv = rut.slice(-1);
+  if (!/^\d+$/.test(cuerpo)) return false;
+  let suma = 0, mul = 2;
+  for (let i = cuerpo.length - 1; i >= 0; i--) {
+    suma += parseInt(cuerpo[i]) * mul;
+    mul = mul === 7 ? 2 : mul + 1;
+  }
+  const res = 11 - (suma % 11);
+  const dvCalc = res === 11 ? '0' : res === 10 ? 'K' : String(res);
+  return dv === dvCalc;
+}
+function formatRut(rut){
+  rut = rut.replace(/[.\s-]/g,'').toUpperCase();
+  if (rut.length < 2) return rut;
+  const cuerpo = rut.slice(0,-1), dv = rut.slice(-1);
+  return cuerpo.replace(/\B(?=(\d{3})+(?!\d))/g,'.') + '-' + dv;
+}
+const inRut = document.getElementById('rut');
+inRut.addEventListener('blur', () => { if (inRut.value.trim()) inRut.value = formatRut(inRut.value); });
+
+const err = (id,on) => document.getElementById(id).classList.toggle('on', on);
+const val = n => { const x = document.querySelector(`input[name="${n}"]:checked`); return x ? x.value : ''; };
+
+document.getElementById('enviar').addEventListener('click', async () => {
+  const nombre = document.getElementById('nombre').value.trim();
+  const rut    = document.getElementById('rut').value.trim();
+  const p1 = val('p1');
+  const p2 = document.getElementById('p2').value;
+  const p3 = [...document.querySelectorAll('input[name="p3"]:checked')].map(c=>c.value);
+  const p4 = [...document.querySelectorAll('input[name="p4"]:checked')].map(c=>c.value);
+  const p5 = document.getElementById('p5').value.trim();
+  const p6 = document.getElementById('p6').value.trim();
+  const autoriza = document.getElementById('autoriza').checked ? 'Sí' : 'No';
+
+  let ok = true;
+  const check = (id,cond) => { err(id,!cond); if(!cond) ok = false; };
+  check('e-nombre', nombre.length > 1);
+  check('e-rut', rutValido(rut));
+  check('e-p1', p1 !== '');
+  check('e-p3', p3.length > 0);
+  check('e-p4', p4.length > 0);
+  check('e-p5', p5.length > 1);
+  err('e-envio', false);
+
+  if (!ok) {
+    document.querySelector('.error.on').closest('.campo').scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+
+  const btn = document.getElementById('enviar');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+
+  const datos = {
+    fecha: new Date().toLocaleString('es-CL',{timeZone:'America/Santiago'}),
+    nombre, rut: formatRut(rut),
+    situacion_laboral: p1,
+    ingreso: p2 || 'Sin respuesta',
+    acciones_post: p3.join(' | '),
+    sigue_usando: p4.join(' | '),
+    formaciones_deseadas: p5,
+    testimonio: p6,
+    autoriza_testimonio: autoriza
+  };
+
+  try {
+    await fetch(URL_SHEET, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body: JSON.stringify(datos)
+    });
+    document.getElementById('formulario').style.display = 'none';
+    document.getElementById('gracias').classList.add('on');
+    window.scrollTo({top:0, behavior:'smooth'});
+  } catch(e) {
+    err('e-envio', true);
+    btn.disabled = false; btn.textContent = 'Enviar mi respuesta';
+  }
+});
+</script>
+</body>
+</html>
