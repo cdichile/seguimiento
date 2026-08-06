@@ -62,6 +62,24 @@
   .opcion{display:flex; align-items:flex-start; gap:10px; font-size:15px; padding:5px 0; cursor:pointer;}
   .opcion input{margin-top:4px; accent-color:var(--purpura); width:17px; height:17px; flex-shrink:0;}
   .p1{border-color:var(--rojo);} .p2{border-color:var(--naranja);} .p3{border-color:var(--amarillo);}
+  .sorteo{border:2px solid var(--azul); border-radius:14px; overflow:hidden; margin-bottom:32px;}
+  .sorteo-cab{background:var(--azul); padding:16px 20px; display:flex; align-items:center; gap:14px;}
+  .sorteo-cab .icono{font-size:30px; line-height:1;}
+  .sorteo-cab .titulo{margin:0; font-size:18px; font-weight:900; color:#FFF;}
+  .sorteo-cab .sub{margin:2px 0 0; font-size:14px; color:rgba(255,255,255,.92);}
+  .sorteo-cuerpo{padding:18px 20px;}
+  .sorteo-cuerpo p.texto{margin:0 0 14px; font-size:15px;}
+  .cuenta{display:inline-block; background:#FDF3E0; color:#8A5A00; border-radius:999px;
+          padding:7px 16px; font-size:14px; font-weight:700; margin-bottom:16px;}
+  .sorteo details{margin-bottom:0;}
+  .especs{display:flex; gap:20px; margin-top:16px; flex-wrap:wrap; align-items:flex-start;}
+  .especs img{width:190px; border-radius:8px; flex-shrink:0;}
+  .especs .datos{flex:1; min-width:240px;}
+  .especs h3{margin:0 0 10px; font-size:18px; font-weight:900;}
+  .especs table{width:100%; border-collapse:collapse; font-size:14px;}
+  .especs td{padding:4px 0; vertical-align:top;}
+  .especs td.k{color:var(--gris); font-weight:700; width:115px; padding-right:10px;}
+  .legal{margin:14px 0 0; font-size:12px; color:var(--gris); line-height:1.5;}
   .subcampo{display:none; margin-top:14px; padding:14px 16px; background:#F7F5FB; border-radius:10px;}
   .subcampo.visible{display:block;}
   .subcampo label{display:block; font-size:14px; font-weight:700; margin-bottom:6px;}
@@ -110,17 +128,51 @@
 
     <div id="formulario">
       <h1>¿Cómo te ha ido desde que ganaste el fondo?</h1>
-      <p class="intro">Son 8 preguntas cortas y te tomará menos de 5 minutos. Tus respuestas nos ayudan a mejorar el programa y a conseguir más fondos para egresados de nuestros programas como lo eres tú.</p>
+      <p class="intro">Son 8 preguntas cortas y te tomará menos de 5 minutos. Tus respuestas nos ayudan a mejorar el programa y a conseguir más fondos para más emprendedoras y emprendedores como tú.</p>
 
       <details>
         <summary>Leer más sobre este seguimiento</summary>
-        <p>Estamos contactando a todas las personas que ganaron el Fondo Impulsa entre 2020 y 2026. Queremos saber qué pasó con tu proyecto después del fondo: qué funcionó, qué no, y qué necesitas hoy.<br><br>
-        Usamos tus respuestas para medir el impacto del programa y tener mejoras. Tus datos personales quedan resguardados por CDI Chile y no se comparten con terceros de forma individual.<br><br>
-        No hay respuestas buenas ni malas. Si tu proyecto con el que ganaste el fondo cerró o está en pausa, también queremos saberlo: esa información es igual de valiosa para nosotros.<br><br>
+        <p>Estamos contactando a todas las personas que ganaron el Fondo Impulsa entre 2020 y 2026. Queremos saber qué pasó con tu proyecto o iniciativa después del fondo: qué funcionó, qué no, y qué necesitas hoy.<br><br>
+        Usamos tus respuestas para medir el impacto del programa y reportarlo a nuestros aliados, siempre de forma agregada y anónima. Tus datos personales quedan resguardados por CDI Chile y no se comparten con terceros de forma individual.<br><br>
+        No hay respuestas buenas ni malas. Si tu proyecto cambió de rumbo, está en pausa o no siguió adelante, también queremos saberlo: esa información es igual de valiosa para nosotros.<br><br>
         Dudas o consultas: lisseth@cdichile.org</p>
       </details>
 
+      <div class="sorteo" id="bloqueSorteo" style="display:none;">
+        <div class="sorteo-cab">
+          <div class="icono">&#127873;</div>
+          <div>
+            <p class="titulo">Responde y participa por un notebook</p>
+            <p class="sub">Un MacBook Pro para impulsar tu proyecto</p>
+          </div>
+        </div>
+        <div class="sorteo-cuerpo">
+          <p class="texto">Si respondes esta encuesta <strong>antes del 21 de agosto</strong>, entras automáticamente al sorteo de un notebook. El sorteo se realizará durante <strong>septiembre</strong> y anunciaremos a la persona ganadora por las redes sociales de CDI Chile.</p>
+          <p class="cuenta" id="cuentaRegresiva"></p>
+          <details>
+            <summary>Ver el notebook que sorteamos</summary>
+            <div class="especs">
+              <img src="Mac_pro.jpeg" alt="MacBook Pro A2141">
+              <div class="datos">
+                <h3>MacBook Pro A2141</h3>
+                <table>
+                  <tr><td class="k">Modelo</td><td>A2141, 16 pulgadas, 2019</td></tr>
+                  <tr><td class="k">Procesador</td><td>Intel Core i7 de 6 núcleos</td></tr>
+                  <tr><td class="k">Memoria RAM</td><td>16 GB</td></tr>
+                  <tr><td class="k">Almacenamiento</td><td>SSD 512 GB</td></tr>
+                  <tr><td class="k">Pantalla</td><td>Retina de 16 pulgadas</td></tr>
+                  <tr><td class="k">Puertos</td><td>4 Thunderbolt 3 (USB-C)</td></tr>
+                  <tr><td class="k">Otros</td><td>Touch Bar y Magic Keyboard</td></tr>
+                </table>
+                <p class="legal">Imagen y especificaciones referenciales. La configuración final puede variar. Para participar debes completar y enviar el formulario antes del 21 de agosto.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+
       <p class="etiqueta-seccion">Para empezar</p>
+      <p style="font-size:13px;color:#999;margin:-6px 0 14px;">Tu contacto es opcional y solo lo usaremos para avisarte si ganas el sorteo.</p>
       <div class="grid">
         <div class="campo">
           <label for="nombre">Nombre y apellido</label>
@@ -139,10 +191,18 @@
             <option>No recuerdo</option>
           </select>
         </div>
+        <div class="campo">
+          <label for="correo">Correo electrónico <span style="font-weight:400;color:#999;">(opcional)</span></label>
+          <input type="email" id="correo" placeholder="tucorreo@ejemplo.com">
+        </div>
+        <div class="campo">
+          <label for="whatsapp">WhatsApp <span style="font-weight:400;color:#999;">(opcional)</span></label>
+          <input type="text" id="whatsapp" placeholder="+569 1234 5678">
+        </div>
       </div>
 
       <div class="pregunta p1">
-        <h2>1. ¿Cómo está tu proyecto o iniciativa HOY hoy?</h2>
+        <h2>1. ¿Cómo está tu proyecto / iniciativa hoy?</h2>
         <label class="opcion"><input type="radio" name="q1" value="Activo y creciendo">Activo y creciendo</label>
         <label class="opcion"><input type="radio" name="q1" value="Activo, se mantiene igual">Activo, se mantiene igual</label>
         <label class="opcion"><input type="radio" name="q1" value="Activo, pero con dificultades">Activo, pero con dificultades</label>
@@ -152,8 +212,8 @@
 
       <div class="pregunta p2">
         <h2>2. ¿Cuáles son tus ingresos mensuales promedio actualmente?</h2>
-        <p class="ayuda">Considera lo que entra por tu negocio en un mes normal</p>
-        <label class="opcion"><input type="radio" name="q2" value="No tengo ingresos del negocio/proyecto actualmente">No tengo ingresos del negocio/proyecto actualmente</label>
+        <p class="ayuda">Considera todo lo que recibes en un mes normal, sea por tu proyecto, tu trabajo o ambos</p>
+        <label class="opcion"><input type="radio" name="q2" value="No tengo ingresos actualmente">No tengo ingresos actualmente</label>
         <label class="opcion"><input type="radio" name="q2" value="$1 - $200.000">$1 – $200.000</label>
         <label class="opcion"><input type="radio" name="q2" value="$200.001 - $400.000">$200.001 – $400.000</label>
         <label class="opcion"><input type="radio" name="q2" value="$400.001 - $600.000">$400.001 – $600.000</label>
@@ -177,17 +237,20 @@
       <div class="pregunta p4">
         <h2>4. ¿Qué lograste gracias al fondo?</h2>
         <p class="ayuda">Puedes marcar varias</p>
-        <label class="opcion"><input type="checkbox" name="q4" value="Aumenté mis ventas">Aumenté mis ventas</label>
-        <label class="opcion"><input type="checkbox" name="q4" value="Compré máquinas o equipos que sigo usando">Compré máquinas o equipos que sigo usando</label>
-        <label class="opcion"><input type="checkbox" name="q4" value="Formalicé mi negocio">Formalicé mi negocio</label>
+        <label class="opcion"><input type="checkbox" name="q4" value="Aumenté mis ventas o ingresos">Aumenté mis ventas o ingresos</label>
+        <label class="opcion"><input type="checkbox" name="q4" value="Compré máquinas, equipos o herramientas que sigo usando">Compré máquinas, equipos o herramientas que sigo usando</label>
+        <label class="opcion"><input type="checkbox" name="q4" value="Formalicé mi negocio o actividad">Formalicé mi negocio o actividad</label>
         <label class="opcion"><input type="checkbox" name="q4" value="Contraté a alguien">Contraté a alguien</label>
         <label class="opcion"><input type="checkbox" name="q4" value="Amplié mis productos o servicios">Amplié mis productos o servicios</label>
+        <label class="opcion"><input type="checkbox" name="q4" value="Conseguí un nuevo empleo">Conseguí un nuevo empleo</label>
+        <label class="opcion"><input type="checkbox" name="q4" value="Mejoré mis condiciones en el trabajo que ya tenía">Mejoré mis condiciones en el trabajo que ya tenía</label>
+        <label class="opcion"><input type="checkbox" name="q4" value="Seguí estudiando o me capacité">Seguí estudiando o me capacité</label>
         <label class="opcion"><input type="checkbox" name="q4" value="Mejoré mi presencia digital">Mejoré mi presencia digital</label>
         <label class="opcion"><input type="checkbox" name="q4" value="Todavía no veo resultados">Todavía no veo resultados</label>
       </div>
 
       <div class="pregunta p5">
-        <h2>5. ¿Qué es lo más importante que cambió en tu proyecto/negocio o en tu vida desde que ganaste el fondo?</h2>
+        <h2>5. ¿Qué es lo más importante que cambió en tu proyecto, tu trabajo o tu vida desde que ganaste el fondo?</h2>
         <textarea id="q5" rows="3" placeholder="Cuéntanos en dos o tres líneas"></textarea>
       </div>
 
@@ -197,7 +260,7 @@
       </div>
 
       <div class="pregunta p1">
-        <h2>7. ¿Te gustaría hacer un live en las redes sociales de CDI durante los próximos meses para hablar de tu negocio/proyecto?</h2>
+        <h2>7. ¿Te gustaría hacer un live en las redes sociales de CDI durante los próximos meses para hablar de tu proyecto, iniciativa o emprendimiento?</h2>
         <p class="ayuda">Es una oportunidad gratuita para dar a conocer lo que haces</p>
         <label class="opcion"><input type="radio" name="q7" value="Sí, me interesa">Sí, me interesa</label>
         <label class="opcion"><input type="radio" name="q7" value="Tal vez, me gustaría saber más">Tal vez, me gustaría saber más</label>
@@ -205,7 +268,7 @@
 
         <div class="subcampo" id="bloqueRedes">
           <label for="q7b">¿Cuál es tu usuario de Instagram, Facebook u otra red social?</label>
-          <input type="text" id="q7b" placeholder="@minegocio">
+          <input type="text" id="q7b" placeholder="@miproyecto">
           <p class="ayuda" style="margin:6px 0 0;">Si tienes varias, escríbelas separadas por coma</p>
         </div>
       </div>
@@ -223,7 +286,7 @@
 
     <div class="gracias" id="gracias">
       <h1>¡Gracias por responder!</h1>
-      <p>Tus respuestas ya quedaron registradas. Esta información nos ayuda a seguir abriendo oportunidades para más personas.</p>
+      <p>Tus respuestas ya quedaron registradas. Esta información nos ayuda a seguir abriendo oportunidades para más emprendedoras y emprendedores.</p>
       <p class="pie">CDI Chile · lisseth@cdichile.org</p>
     </div>
 
@@ -247,6 +310,17 @@
     return out.join(" | ");
   }
 
+  var LIMITE_SORTEO = new Date(2026, 7, 22, 0, 0, 0); // 22 de agosto 00:00 = se puede responder todo el 21
+  (function(){
+    var ahora = new Date();
+    if (ahora < LIMITE_SORTEO) {
+      var dias = Math.ceil((LIMITE_SORTEO - ahora) / 86400000);
+      var txt = dias === 1 ? "\u23F3 Queda 1 día para participar" : "\u23F3 Quedan " + dias + " días para participar";
+      document.getElementById("cuentaRegresiva").textContent = txt;
+      document.getElementById("bloqueSorteo").style.display = "block";
+    }
+  })();
+
   var opcionesQ7 = document.querySelectorAll('input[name="q7"]');
   var bloqueRedes = document.getElementById("bloqueRedes");
   for (var j = 0; j < opcionesQ7.length; j++) {
@@ -265,6 +339,8 @@
       nombre: document.getElementById("nombre").value.trim(),
       rut: document.getElementById("rut").value.trim(),
       anio: document.getElementById("anio").value,
+      correo: document.getElementById("correo").value.trim(),
+      whatsapp: document.getElementById("whatsapp").value.trim(),
       q1_estado: valorRadio("q1"),
       q2_ingresos: valorRadio("q2"),
       q3_cambio: valorRadio("q3"),
