@@ -138,7 +138,7 @@
         Dudas o consultas: lisseth@cdichile.org</p>
       </details>
 
-      <div class="sorteo" id="bloqueSorteo" style="display:none;">
+      <div class="sorteo" id="bloqueSorteo">
         <div class="sorteo-cab">
           <div class="icono">&#127873;</div>
           <div>
@@ -148,7 +148,7 @@
         </div>
         <div class="sorteo-cuerpo">
           <p class="texto">Si respondes esta encuesta <strong>antes del 21 de agosto</strong>, entras automáticamente al sorteo de un notebook. El sorteo se realizará durante <strong>septiembre</strong> y anunciaremos a la persona ganadora por las redes sociales de CDI Chile.</p>
-          <p class="cuenta" id="cuentaRegresiva"></p>
+          <p class="cuenta" id="cuentaRegresiva">Tienes hasta el 21 de agosto para participar</p>
           <details>
             <summary>Ver el notebook que sorteamos</summary>
             <div class="especs">
@@ -294,7 +294,7 @@
 </div>
 
 <script>
-  var URL_SCRIPT = "https://script.google.com/macros/s/AKfycbznxS49-nvHu0K3ekpeEAJO6Qe_41GcGyCYCMUBmaHopxxxHKCGNRvAFeoSjT28hnUXCg/exec";
+  var URL_SCRIPT = "PEGA_AQUI_LA_URL_DE_TU_APPS_SCRIPT";
 
   var boton = document.getElementById("btnEnviar");
   var aviso = document.getElementById("aviso");
@@ -313,12 +313,13 @@
   var LIMITE_SORTEO = new Date(2026, 7, 22, 0, 0, 0); // 22 de agosto 00:00 = se puede responder todo el 21
   (function(){
     var ahora = new Date();
-    if (ahora < LIMITE_SORTEO) {
-      var dias = Math.ceil((LIMITE_SORTEO - ahora) / 86400000);
-      var txt = dias === 1 ? "\u23F3 Queda 1 día para participar" : "\u23F3 Quedan " + dias + " días para participar";
-      document.getElementById("cuentaRegresiva").textContent = txt;
-      document.getElementById("bloqueSorteo").style.display = "block";
+    if (ahora >= LIMITE_SORTEO) {
+      document.getElementById("bloqueSorteo").style.display = "none";
+      return;
     }
+    var dias = Math.ceil((LIMITE_SORTEO - ahora) / 86400000);
+    var txt = dias === 1 ? "\u23F3 Queda 1 día para participar" : "\u23F3 Quedan " + dias + " días para participar";
+    document.getElementById("cuentaRegresiva").textContent = txt;
   })();
 
   var opcionesQ7 = document.querySelectorAll('input[name="q7"]');
